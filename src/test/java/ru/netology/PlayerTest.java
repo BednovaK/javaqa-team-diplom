@@ -21,4 +21,18 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
+
+    @Test
+    public void shouldExpIfGameNotInstall() {
+
+        GameStore store = new GameStore();
+        Game game3 = store.publishGame("Симс", "Бродилка");
+
+        Player player = new Player("Petya");
+
+        assertThrows(RuntimeException.class, () -> {
+            player.play(game3,1);
+        });
+    }
+
 }
