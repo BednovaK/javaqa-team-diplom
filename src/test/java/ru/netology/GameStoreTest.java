@@ -15,5 +15,43 @@ public class GameStoreTest {
         assertTrue(store.containsGame(game));
     }
 
-    // другие ваши тесты
+    @Test
+    public void shouldAddGameNotFound() {
+
+        GameStore store = new GameStore();
+        Game game = null;
+
+        assertFalse(store.containsGame(game));
+    }
+
+    @Test
+    public void ShouldGetMostPlayer() {
+
+        GameStore store = new GameStore();
+        store.addPlayTime("Petya", 5);
+        store.addPlayTime("Petya", 30);
+        store.addPlayTime("Anna", 30);
+
+        String expected = "Petya";
+        String actual = store.getMostPlayer();
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void ShouldGetSumPlayedTime() {
+
+        GameStore store = new GameStore();
+        store.addPlayTime("Petya", 5);
+        store.addPlayTime("Anna", 5);
+        store.addPlayTime("Anton", 15);
+
+
+        int expected = 25;
+        int actual = store.getSumPlayedTime();
+
+        assertEquals(expected, actual);
+
+    }
 }
