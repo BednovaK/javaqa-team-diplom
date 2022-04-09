@@ -1,14 +1,10 @@
 package ru.netology;
 
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.*;
 
+import org.junit.jupiter.api.Test;
 
 public class GameStoreTest {
-
 
     @Test
     public void shouldAddGame() {
@@ -19,5 +15,5 @@ public class GameStoreTest {
         assertTrue(store.containsGame(game));
     }
 
-
+    // другие ваши тесты
 }
