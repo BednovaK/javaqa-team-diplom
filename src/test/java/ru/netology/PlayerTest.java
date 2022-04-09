@@ -59,5 +59,26 @@ public class PlayerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    public void shouldMostPlayerByGenreIfGameNotPlayed() {
 
+        GameStore store = new GameStore();
+        Game game1 = store.publishGame("Танки", "Стрелялка");
+        Game game2 = store.publishGame("Симс", "Бродилка");
+        Game game3 = store.publishGame("Пышки", "Ещё");
+
+        Player player = new Player("Petya");
+        player.installGame(game1);
+        player.installGame(game2);
+        player.installGame(game3);
+
+        player.play(game2, 12);
+        player.play(game3, 8);
+
+
+        Game expected = null;
+        Game actual = player.mostPlayerByGenre("Стрелялка");
+
+        assertEquals(expected, actual);
+    }
 }
