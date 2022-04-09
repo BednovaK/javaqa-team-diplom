@@ -31,8 +31,33 @@ public class PlayerTest {
         Player player = new Player("Petya");
 
         assertThrows(RuntimeException.class, () -> {
-            player.play(game3,1);
+            player.play(game3, 1);
         });
     }
+
+    @Test
+    public void shouldMostPlayerByGenreGamePlayed() {
+
+        GameStore store = new GameStore();
+        Game game1 = store.publishGame("Ёлки", "Аркада");
+        Game game2 = store.publishGame("Палки", "Аркада");
+        Game game3 = store.publishGame("Пышки", "Бродилка");
+
+        Player player = new Player("Petya");
+        player.installGame(game1);
+        player.installGame(game2);
+        player.installGame(game3);
+
+        player.play(game1, 50);
+        player.play(game2, 12);
+        player.play(game3, 1);
+
+
+        Game expected = game1;
+        Game actual = player.mostPlayerByGenre("Аркада");
+
+        assertEquals(expected, actual);
+    }
+
 
 }
