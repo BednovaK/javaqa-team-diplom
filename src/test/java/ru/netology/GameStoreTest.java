@@ -37,4 +37,20 @@ public class GameStoreTest {
         assertEquals(expected, actual);
 
     }
+
+    @Test
+    public void ShouldGetSumPlayedTime() {
+
+        GameStore store = new GameStore();
+        store.addPlayTime("Petya", 5);
+        store.addPlayTime("Anna", 5);
+        store.addPlayTime("Anton", 15);
+
+
+        int expected = 25;
+        int actual = store.getSumPlayedTime();
+
+        assertEquals(expected, actual);
+
+    }
 }
